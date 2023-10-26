@@ -212,37 +212,49 @@ Public Class manage_user
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ' Handle the delete button click event
-        Dim i As Integer
+        Try
+            ' Check if the connection is already open
+            If myconnection.Open().State = ConnectionState.Open Then
+                Dim i As Integer
 
-        If DGV1.SelectedRows.Count > 0 Then
-            i = DGV1.CurrentRow.Index
+                If DGV1.SelectedRows.Count > 0 Then
+                    i = DGV1.CurrentRow.Index
 
-            Dim noValue As String = DGV1.Rows(i).Cells("NO").Value.ToString
-            mycmd.Connection = myconnection.open()
-            mycmd.Parameters.Clear()
-            mycmd.CommandText = "DELETE FROM user_table WHERE NO = @NO"
-            mycmd.Parameters.AddWithValue("@NO", noValue)
-            mycmd.ExecuteNonQuery()
-            VwGridview()
+                    Dim noValue As String = DGV1.Rows(i).Cells("NO").Value.ToString
+                    mycmd.Connection = myconnection.Open()
+                    mycmd.Parameters.Clear()
+                    mycmd.CommandText = "DELETE FROM user_table WHERE NO = @NO"
+                    mycmd.Parameters.AddWithValue("@NO", noValue)
+                    mycmd.ExecuteNonQuery()
+                    VwGridview()
 
+                    ' Reset textboxes and comboboxes
+                    Tbname.Text = ""
+                    Tbid.Text = ""
+                    Tbyearandsection.Text = ""
+                    cbStatus.SelectedIndex = -1 ' Clear the selected item in the ComboBox
+                    Tbpn.Text = ""
+                    Tbpassword.Text = ""
+                    Tbemail.Text = ""
+                    Tbun.Text = ""
+                    cbGender.SelectedIndex = -1
 
-            Tbname.Text = ""
-            Tbid.Text = ""
-            Tbyearandsection.Text = ""
-            cbStatus.SelectedIndex = -1 ' Clear the selected item in the ComboBox
-            Tbpn.Text = ""
-            Tbpassword.Text = ""
-            Tbemail.Text = ""
-            Tbun.Text = ""
-            cbGender.SelectedIndex = -1
-            MsgBox("Data deleted!", MsgBoxStyle.Information, "Notice")
-        Else
-            MessageBox.Show("Please select a row to delete")
-        End If
-        myconnection.close()
-
+                    MsgBox("Data deleted!", MsgBoxStyle.Information, "Notice")
+                Else
+                    MessageBox.Show("Please select a row to delete")
+                End If
+            Else
+                MessageBox.Show("Failed to open the connection.")
+            End If
+        Catch ex As Exception
+            ' Handle any exceptions here, for example, display an error message
+            MessageBox.Show("An error occurred while deleting data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Close the database connection in the finally block
+            myconnection.Close()
+        End Try
     End Sub
+
 
     Private Sub DGV1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGV1.CellClick
         ' Handle the DataGridView cell click event to populate the text boxes
