@@ -3,23 +3,24 @@
 Public Class DTConnection
     Dim conect As New MySqlConnection("server=localhost; userid=root; password=; database=login_database")
 
-
-    Public Function open() As MySqlConnection
+    Public Function Open() As MySqlConnection
         Try
             conect.Open()
         Catch ex As Exception
-            MsgBox(ex.Message)
-
+            ' Handle connection opening errors here
+            ' You can log the error or take appropriate actions
+            Throw New Exception("Failed to open the connection.", ex)
         End Try
         Return conect
     End Function
 
-    Public Function close() As MySqlConnection
+    Public Function Close() As MySqlConnection
         Try
             conect.Close()
         Catch ex As Exception
-            MsgBox(ex.Message)
-
+            ' Handle connection closing errors here
+            ' You can log the error or take appropriate actions
+            Throw New Exception("Failed to close the connection.", ex)
         End Try
         Return conect
     End Function
