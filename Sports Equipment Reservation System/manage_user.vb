@@ -263,63 +263,64 @@ Public Class manage_user
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Try
-            ' Handle the Save button click event
             Dim emailPattern As String = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
             Dim phonenumberPattern As String = "^(09)\d{9}$"
 
             If String.IsNullOrWhiteSpace(Tbname.Text) OrElse
-        String.IsNullOrWhiteSpace(Tbid.Text) OrElse Not Regex.IsMatch(Tbid.Text, "^\d{2}-\d{1}-\d{1}-\d{4}$") OrElse
-        String.IsNullOrWhiteSpace(Tbyearandsection.Text) OrElse
-        cbStatus.SelectedItem Is Nothing OrElse ' Check if no item is selected in the ComboBox
-         cbGender.SelectedItem Is Nothing OrElse
-        String.IsNullOrWhiteSpace(Tbpn.Text) OrElse Not Regex.IsMatch(Tbpn.Text, phonenumberPattern) OrElse
-        String.IsNullOrWhiteSpace(Tbemail.Text) OrElse Not Regex.IsMatch(Tbemail.Text, emailPattern) OrElse
-        String.IsNullOrWhiteSpace(Tbun.Text) OrElse
-        String.IsNullOrWhiteSpace(Tbpassword.Text) Then
+           String.IsNullOrWhiteSpace(Tbid.Text) OrElse
+           String.IsNullOrWhiteSpace(Tbyearandsection.Text) OrElse
+           cbStatus.SelectedItem Is Nothing OrElse
+           cbGender.SelectedItem Is Nothing OrElse
+           String.IsNullOrWhiteSpace(Tbpn.Text) OrElse Not Regex.IsMatch(Tbpn.Text, phonenumberPattern) OrElse
+           String.IsNullOrWhiteSpace(Tbemail.Text) OrElse Not Regex.IsMatch(Tbemail.Text, emailPattern) OrElse
+           String.IsNullOrWhiteSpace(Tbun.Text) OrElse
+           String.IsNullOrWhiteSpace(Tbpassword.Text) Then
                 ' Display a message box if any of the fields is empty or if any field has an invalid format
                 MsgBox("Please fill up all fields.", MsgBoxStyle.Exclamation, "Error")
-                If Not Regex.IsMatch(Tbid.Text, "^\d{2}-\d{1}-\d{1}-\d{4}$") Then
-                    MsgBox("ID is invalid. Please use the format '0-0-0-0000'.", MsgBoxStyle.Exclamation, "Error")
-                ElseIf Not Regex.IsMatch(Tbpn.Text, phonenumberPattern) Then
-                    MsgBox("Phone number is invalid", MsgBoxStyle.Exclamation, "Error")
-                ElseIf Not Regex.IsMatch(Tbemail.Text, emailPattern) Then
-                    MsgBox("Email is invalid. Please enter a valid email address.", MsgBoxStyle.Exclamation, "Error")
-                Else
-                    MsgBox("Please fill up all fields.", MsgBoxStyle.Exclamation, "Error")
-                End If
+
+
+            ElseIf Not Regex.IsMatch(Tbid.Text, "^\d{2}-\d{1}-\d{1}-\d{4}$") Then
+                MsgBox("ID is invalid. Please use the format '0-0-0-0000'.", MsgBoxStyle.Exclamation, "Error")
+            ElseIf Not Regex.IsMatch(Tbpn.Text, phonenumberPattern) Then
+                MsgBox("Phone number is invalid", MsgBoxStyle.Exclamation, "Error")
+            ElseIf Not Regex.IsMatch(Tbemail.Text, emailPattern) Then
+                MsgBox("Email is invalid. Please enter a valid email address.", MsgBoxStyle.Exclamation, "Error")
+
+
+            ElseIf UserExists(Tbname.Text, Tbid.Text) Then
+                MsgBox("A user with the same name or student ID already exists.", MsgBoxStyle.Exclamation, "Error")
             Else
-                If UserExists(Tbname.Text, Tbid.Text) Then
-                    MsgBox("A user with the same name or student ID already exists.", MsgBoxStyle.Exclamation, "Error")
-                Else
-                    ' Continue with inserting data into the user_table
-                    mycmd.Connection = myconnection.open()
-                    mycmd.CommandText = "INSERT INTO user_table (Name, `Student Id`, `Year and Section`, Status, `Phone Number`, Email, Username, Password, Gender) VALUES('" & Tbname.Text & "','" & Tbid.Text & "','" & Tbyearandsection.Text & "','" & cbStatus.SelectedItem.ToString() & "','" & Tbpn.Text & "','" & Tbemail.Text & "','" & Tbun.Text & "','" & Tbpassword.Text & "', '" & cbGender.SelectedItem.ToString() & "')"
+                ' Continue with inserting data into the user_table
+                mycmd.Connection = myconnection.Open()
+                mycmd.CommandText = "INSERT INTO user_table (Name, `Student Id`, `Year and Section`, Status, `Phone Number`, Email, Username, Password, Gender) VALUES('" & Tbname.Text & "','" & Tbid.Text & "','" & Tbyearandsection.Text & "','" & cbStatus.SelectedItem.ToString() & "','" & Tbpn.Text & "','" & Tbemail.Text & "','" & Tbun.Text & "','" & Tbpassword.Text & "', '" & cbGender.SelectedItem.ToString() & "')"
 
-                    mycmd.ExecuteNonQuery()
+                mycmd.ExecuteNonQuery()
 
-                    VwGridview()
-                    MsgBox("Data saved!", MsgBoxStyle.Information, "Notice")
+                VwGridview()
+                MsgBox("Data saved!", MsgBoxStyle.Information, "Notice")
 
-
-                    Tbname.Text = ""
-                    Tbid.Text = ""
-                    Tbyearandsection.Text = ""
-                    cbStatus.SelectedIndex = -1 ' Clear the selected item in the ComboBox
-                    Tbpn.Text = ""
-                    Tbpassword.Text = ""
-                    Tbemail.Text = ""
-                    Tbun.Text = ""
-                    cbGender.SelectedIndex = -1
-
-
-                End If
+                ' Reset textboxes and comboboxes
+                Tbname.Text = ""
+                Tbid.Text = ""
+                Tbyearandsection.Text = ""
+                cbStatus.SelectedIndex = -1 ' Clear the selected item in the ComboBox
+                Tbpn.Text = ""
+                Tbpassword.Text = ""
+                Tbemail.Text = ""
+                Tbun.Text = ""
+                cbGender.SelectedIndex = -1
             End If
-            myconnection.close() ' Close the connection
-        Catch ex As Exception
-            MsgBox("An error occurred: " & ex.Message, MsgBoxStyle.Exclamation, "Error")
-        End Try
 
+
+        Catch ex As Exception
+            ' Handle any exceptions here, for example, display an error message
+            MessageBox.Show("An error occurred while saving data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Close the database connection in the finally block
+            myconnection.Close()
+        End Try
     End Sub
+
 
 
 
