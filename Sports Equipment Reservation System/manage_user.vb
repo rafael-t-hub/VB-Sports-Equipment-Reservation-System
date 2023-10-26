@@ -116,64 +116,67 @@ Public Class manage_user
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Try
-            myconnection.Open()
+            ' Check if the connection is already open
+            If myconnection.Open().State = ConnectionState.Open Then
+                Dim i As Integer
 
-            Dim i As Integer
+                If DGV1.SelectedRows.Count > 0 Then
+                    i = DGV1.CurrentRow.Index
 
-            If DGV1.SelectedRows.Count > 0 Then
-                i = DGV1.CurrentRow.Index
+                    ' Access the "NO" column value from the underlying data source
+                    Dim noValue As String = DGV1.Rows(i).Cells("NO").Value.ToString
 
-                ' Access the "NO" column value from the underlying data source
-                Dim noValue As String = DGV1.Rows(i).Cells("NO").Value.ToString
+                    ' Check if there are any changes in the values
+                    Dim changesMade As Boolean = CheckForChanges(i)
 
-                ' Check if there are any changes in the values
-                Dim changesMade As Boolean = CheckForChanges(i)
+                    If changesMade Then
+                        mycmd.CommandText = "UPDATE user_table 
+                    SET Name = @Name, `Student ID` = @StudentId, 
+                        `Year and Section` = @YearSection, 
+                        Status = @Status, 
+                        `Phone Number` = @PhoneNumber, 
+                        Email = @Email, 
+                        Username = @Username, 
+                        Password = @Password,
+                        Gender = @Gender
+                    WHERE NO = @NO"
+                        mycmd.Parameters.Clear()
 
-                If changesMade Then
-                    mycmd.CommandText = "UPDATE user_table 
-                SET Name = @Name, `Student ID` = @StudentId, 
-                    `Year and Section` = @YearSection, 
-                    Status = @Status, 
-                    `Phone Number` = @PhoneNumber, 
-                    Email = @Email, 
-                    Username = @Username, 
-                    Password = @Password,
-                    Gender = @Gender
-                WHERE NO = @NO"
-                    mycmd.Parameters.Clear()
+                        ' Set parameter values
+                        mycmd.Parameters.AddWithValue("@Name", Tbname.Text)
+                        mycmd.Parameters.AddWithValue("@StudentId", Tbid.Text)
+                        mycmd.Parameters.AddWithValue("@YearSection", Tbyearandsection.Text)
+                        mycmd.Parameters.AddWithValue("@Status", cbStatus.SelectedItem.ToString())
+                        mycmd.Parameters.AddWithValue("@PhoneNumber", Tbpn.Text)
+                        mycmd.Parameters.AddWithValue("@Email", Tbemail.Text)
+                        mycmd.Parameters.AddWithValue("@Username", Tbun.Text)
+                        mycmd.Parameters.AddWithValue("@Password", Tbpassword.Text)
+                        mycmd.Parameters.AddWithValue("@Gender", cbGender.SelectedItem.ToString())
+                        mycmd.Parameters.AddWithValue("@NO", noValue)
 
-                    ' Set parameter values
-                    mycmd.Parameters.AddWithValue("@Name", Tbname.Text)
-                    mycmd.Parameters.AddWithValue("@StudentId", Tbid.Text)
-                    mycmd.Parameters.AddWithValue("@YearSection", Tbyearandsection.Text)
-                    mycmd.Parameters.AddWithValue("@Status", cbStatus.SelectedItem.ToString())
-                    mycmd.Parameters.AddWithValue("@PhoneNumber", Tbpn.Text)
-                    mycmd.Parameters.AddWithValue("@Email", Tbemail.Text)
-                    mycmd.Parameters.AddWithValue("@Username", Tbun.Text)
-                    mycmd.Parameters.AddWithValue("@Password", Tbpassword.Text)
-                    mycmd.Parameters.AddWithValue("@Gender", cbGender.SelectedItem.ToString())
-                    mycmd.Parameters.AddWithValue("@NO", noValue)
+                        mycmd.ExecuteNonQuery()
+                        VwGridview()
 
-                    mycmd.ExecuteNonQuery()
-                    VwGridview()
+                        ' Reset textboxes and comboboxes
+                        Tbname.Text = ""
+                        Tbid.Text = ""
+                        Tbyearandsection.Text = ""
+                        cbStatus.SelectedIndex = -1 ' Clear the selected item in the ComboBox
+                        Tbpn.Text = ""
+                        Tbpassword.Text = ""
+                        Tbemail.Text = ""
+                        Tbun.Text = ""
+                        cbGender.SelectedIndex = -1
 
-                    ' Reset textboxes and comboboxes
-                    Tbname.Text = ""
-                    Tbid.Text = ""
-                    Tbyearandsection.Text = ""
-                    cbStatus.SelectedIndex = -1 ' Clear the selected item in the ComboBox
-                    Tbpn.Text = ""
-                    Tbpassword.Text = ""
-                    Tbemail.Text = ""
-                    Tbun.Text = ""
-                    cbGender.SelectedIndex = -1
-
-                    MsgBox("Data updated!", MsgBoxStyle.Information, "Notice")
+                        MsgBox("Data updated!", MsgBoxStyle.Information, "Notice")
+                    Else
+                        MsgBox("No changes made to the data.", MsgBoxStyle.Information, "Notice")
+                    End If
                 Else
-                    MsgBox("No changes made to the data.", MsgBoxStyle.Information, "Notice")
+                    MessageBox.Show("Please select a row to update")
                 End If
             Else
-                MessageBox.Show("Please select a row to update")
+                MessageBox.Show("Failed to open the connection.")
             End If
         Catch ex As Exception
             ' Handle any exceptions here, for example, display an error message
@@ -183,6 +186,7 @@ Public Class manage_user
             myconnection.Close()
         End Try
     End Sub
+
 
     Private Function CheckForChanges(rowIndex As Integer) As Boolean
         ' Compare the values in the textboxes with the values in the DataGridView
