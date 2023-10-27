@@ -303,6 +303,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="reservation.Designer.vb">
+      <DependentUpon>reservation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="reservation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SignUp.Designer.vb">
       <DependentUpon>SignUp.vb</DependentUpon>
     </Compile>
@@ -325,6 +331,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reservation.resx">
+      <DependentUpon>reservation.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.vb</DependentUpon>
