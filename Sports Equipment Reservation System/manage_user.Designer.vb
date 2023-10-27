@@ -25,6 +25,8 @@ Partial Class manage_user
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -45,6 +47,11 @@ Partial Class manage_user
         Me.Tbun = New System.Windows.Forms.TextBox()
         Me.Tbpassword = New System.Windows.Forms.TextBox()
         Me.DGV1 = New System.Windows.Forms.DataGridView()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cbGender = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cbStatus = New System.Windows.Forms.ComboBox()
+        Me.csPass = New System.Windows.Forms.CheckBox()
         Me.STUDENT_ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.STUDENT_NAME = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.YEAR_AND_SECTION = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,11 +62,6 @@ Partial Class manage_user
         Me.PASSWORD = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GENDER = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.cbGender = New System.Windows.Forms.ComboBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.cbStatus = New System.Windows.Forms.ComboBox()
-        Me.csPass = New System.Windows.Forms.CheckBox()
         CType(Me.DGV1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -309,115 +311,54 @@ Partial Class manage_user
         Me.DGV1.AllowUserToDeleteRows = False
         Me.DGV1.AllowUserToResizeColumns = False
         Me.DGV1.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Yellow
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(236, Byte), Integer))
         Me.DGV1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.DGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGV1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.STUDENT_ID, Me.STUDENT_NAME, Me.YEAR_AND_SECTION, Me.STATUS, Me.PHONE_NUMBER, Me.EMAIL, Me.USERNAME, Me.PASSWORD, Me.GENDER, Me.NO})
+        Me.DGV1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(236, Byte), Integer))
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Lime
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(63, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(20, 15, 20, 15)
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGV1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DGV1.Location = New System.Drawing.Point(70, 590)
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGV1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.STUDENT_ID, Me.STUDENT_NAME, Me.YEAR_AND_SECTION, Me.STATUS, Me.PHONE_NUMBER, Me.EMAIL, Me.USERNAME, Me.PASSWORD, Me.GENDER, Me.NO})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV1.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGV1.EnableHeadersVisualStyles = False
+        Me.DGV1.GridColor = System.Drawing.Color.Black
+        Me.DGV1.Location = New System.Drawing.Point(32, 608)
         Me.DGV1.Margin = New System.Windows.Forms.Padding(2)
         Me.DGV1.MultiSelect = False
         Me.DGV1.Name = "DGV1"
         Me.DGV1.ReadOnly = True
         Me.DGV1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGV1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Empty
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Empty
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DGV1.RowHeadersVisible = False
         Me.DGV1.RowHeadersWidth = 51
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(246, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(236, Byte), Integer))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        Me.DGV1.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.DGV1.RowTemplate.Height = 50
         Me.DGV1.RowTemplate.ReadOnly = True
         Me.DGV1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGV1.Size = New System.Drawing.Size(1404, 345)
+        Me.DGV1.Size = New System.Drawing.Size(1509, 371)
         Me.DGV1.TabIndex = 81
-        '
-        'STUDENT_ID
-        '
-        Me.STUDENT_ID.HeaderText = "STUDENT_ ID"
-        Me.STUDENT_ID.MinimumWidth = 6
-        Me.STUDENT_ID.Name = "STUDENT_ID"
-        Me.STUDENT_ID.ReadOnly = True
-        Me.STUDENT_ID.Width = 125
-        '
-        'STUDENT_NAME
-        '
-        Me.STUDENT_NAME.HeaderText = "STUDENT_NAME"
-        Me.STUDENT_NAME.MinimumWidth = 6
-        Me.STUDENT_NAME.Name = "STUDENT_NAME"
-        Me.STUDENT_NAME.ReadOnly = True
-        Me.STUDENT_NAME.Width = 250
-        '
-        'YEAR_AND_SECTION
-        '
-        Me.YEAR_AND_SECTION.HeaderText = "YEAR_AND_SECTION"
-        Me.YEAR_AND_SECTION.MinimumWidth = 6
-        Me.YEAR_AND_SECTION.Name = "YEAR_AND_SECTION"
-        Me.YEAR_AND_SECTION.ReadOnly = True
-        Me.YEAR_AND_SECTION.Width = 125
-        '
-        'STATUS
-        '
-        Me.STATUS.HeaderText = "STATUS"
-        Me.STATUS.MinimumWidth = 6
-        Me.STATUS.Name = "STATUS"
-        Me.STATUS.ReadOnly = True
-        Me.STATUS.Width = 125
-        '
-        'PHONE_NUMBER
-        '
-        Me.PHONE_NUMBER.HeaderText = "PHONE_NUMBER"
-        Me.PHONE_NUMBER.MinimumWidth = 6
-        Me.PHONE_NUMBER.Name = "PHONE_NUMBER"
-        Me.PHONE_NUMBER.ReadOnly = True
-        Me.PHONE_NUMBER.Width = 125
-        '
-        'EMAIL
-        '
-        Me.EMAIL.HeaderText = "EMAIL"
-        Me.EMAIL.MinimumWidth = 6
-        Me.EMAIL.Name = "EMAIL"
-        Me.EMAIL.ReadOnly = True
-        Me.EMAIL.Width = 250
-        '
-        'USERNAME
-        '
-        Me.USERNAME.HeaderText = "USERNAME"
-        Me.USERNAME.MinimumWidth = 6
-        Me.USERNAME.Name = "USERNAME"
-        Me.USERNAME.ReadOnly = True
-        Me.USERNAME.Width = 125
-        '
-        'PASSWORD
-        '
-        Me.PASSWORD.HeaderText = "PASSWORD"
-        Me.PASSWORD.MinimumWidth = 6
-        Me.PASSWORD.Name = "PASSWORD"
-        Me.PASSWORD.ReadOnly = True
-        Me.PASSWORD.Width = 125
-        '
-        'GENDER
-        '
-        Me.GENDER.HeaderText = "GENDER"
-        Me.GENDER.Name = "GENDER"
-        Me.GENDER.ReadOnly = True
-        '
-        'NO
-        '
-        Me.NO.HeaderText = "NO"
-        Me.NO.Name = "NO"
-        Me.NO.ReadOnly = True
-        Me.NO.Visible = False
         '
         'Panel1
         '
@@ -501,6 +442,83 @@ Partial Class manage_user
         Me.csPass.Text = "Show/Hide Password"
         Me.csPass.UseVisualStyleBackColor = True
         '
+        'STUDENT_ID
+        '
+        Me.STUDENT_ID.HeaderText = "STUDENT  ID"
+        Me.STUDENT_ID.MinimumWidth = 6
+        Me.STUDENT_ID.Name = "STUDENT_ID"
+        Me.STUDENT_ID.ReadOnly = True
+        Me.STUDENT_ID.Width = 165
+        '
+        'STUDENT_NAME
+        '
+        Me.STUDENT_NAME.HeaderText = "STUDENT NAME"
+        Me.STUDENT_NAME.MinimumWidth = 6
+        Me.STUDENT_NAME.Name = "STUDENT_NAME"
+        Me.STUDENT_NAME.ReadOnly = True
+        Me.STUDENT_NAME.Width = 250
+        '
+        'YEAR_AND_SECTION
+        '
+        Me.YEAR_AND_SECTION.HeaderText = "YEAR AND SECTION"
+        Me.YEAR_AND_SECTION.MinimumWidth = 6
+        Me.YEAR_AND_SECTION.Name = "YEAR_AND_SECTION"
+        Me.YEAR_AND_SECTION.ReadOnly = True
+        Me.YEAR_AND_SECTION.Width = 190
+        '
+        'STATUS
+        '
+        Me.STATUS.HeaderText = "STATUS"
+        Me.STATUS.MinimumWidth = 6
+        Me.STATUS.Name = "STATUS"
+        Me.STATUS.ReadOnly = True
+        Me.STATUS.Width = 125
+        '
+        'PHONE_NUMBER
+        '
+        Me.PHONE_NUMBER.HeaderText = "PHONE NUMBER"
+        Me.PHONE_NUMBER.MinimumWidth = 6
+        Me.PHONE_NUMBER.Name = "PHONE_NUMBER"
+        Me.PHONE_NUMBER.ReadOnly = True
+        Me.PHONE_NUMBER.Width = 175
+        '
+        'EMAIL
+        '
+        Me.EMAIL.HeaderText = "EMAIL"
+        Me.EMAIL.MinimumWidth = 6
+        Me.EMAIL.Name = "EMAIL"
+        Me.EMAIL.ReadOnly = True
+        Me.EMAIL.Width = 250
+        '
+        'USERNAME
+        '
+        Me.USERNAME.HeaderText = "USERNAME"
+        Me.USERNAME.MinimumWidth = 6
+        Me.USERNAME.Name = "USERNAME"
+        Me.USERNAME.ReadOnly = True
+        Me.USERNAME.Width = 125
+        '
+        'PASSWORD
+        '
+        Me.PASSWORD.HeaderText = "PASSWORD"
+        Me.PASSWORD.MinimumWidth = 6
+        Me.PASSWORD.Name = "PASSWORD"
+        Me.PASSWORD.ReadOnly = True
+        Me.PASSWORD.Width = 125
+        '
+        'GENDER
+        '
+        Me.GENDER.HeaderText = "GENDER"
+        Me.GENDER.Name = "GENDER"
+        Me.GENDER.ReadOnly = True
+        '
+        'NO
+        '
+        Me.NO.HeaderText = "NO"
+        Me.NO.Name = "NO"
+        Me.NO.ReadOnly = True
+        Me.NO.Visible = False
+        '
         'manage_user
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -536,10 +554,12 @@ Partial Class manage_user
     Friend WithEvents Tbemail As TextBox
     Friend WithEvents Tbun As TextBox
     Friend WithEvents Tbpassword As TextBox
-    Friend WithEvents DGV1 As DataGridView
     Friend WithEvents Panel1 As Panel
     Friend WithEvents csPass As CheckBox
     Friend WithEvents cbStatus As ComboBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents cbGender As ComboBox
+    Friend WithEvents DGV1 As DataGridView
     Friend WithEvents STUDENT_ID As DataGridViewTextBoxColumn
     Friend WithEvents STUDENT_NAME As DataGridViewTextBoxColumn
     Friend WithEvents YEAR_AND_SECTION As DataGridViewTextBoxColumn
@@ -550,6 +570,4 @@ Partial Class manage_user
     Friend WithEvents PASSWORD As DataGridViewTextBoxColumn
     Friend WithEvents GENDER As DataGridViewTextBoxColumn
     Friend WithEvents NO As DataGridViewTextBoxColumn
-    Friend WithEvents Label8 As Label
-    Friend WithEvents cbGender As ComboBox
 End Class
