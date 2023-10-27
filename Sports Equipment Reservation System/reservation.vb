@@ -1,5 +1,5 @@
 ﻿Public Class reservation
-    Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs)
+    Private Sub reservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class
