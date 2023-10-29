@@ -1,6 +1,5 @@
 ﻿Public Class reservation
 
-    Dim Table_Tennis_Table As New ListViewItem()
     Private Sub AddEquipmentItem()
         Dim Basketball_Ball As New ListViewItem()
         Dim Volleyball_Ball As New ListViewItem()

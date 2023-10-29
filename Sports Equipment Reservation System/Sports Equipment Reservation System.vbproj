@@ -380,6 +380,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reservation.resx">
       <DependentUpon>reservation.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.vb</DependentUpon>
