@@ -63,7 +63,7 @@ Partial Class manage_user
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cbStatus = New System.Windows.Forms.ComboBox()
         Me.csPass = New System.Windows.Forms.CheckBox()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+
         CType(Me.DGV1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -518,11 +518,6 @@ Partial Class manage_user
         Me.csPass.TabIndex = 82
         Me.csPass.Text = "Show/Hide Password"
         Me.csPass.UseVisualStyleBackColor = True
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
         'manage_user
         '
