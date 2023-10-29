@@ -311,6 +311,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="CustomListViewItem.vb" />
     <Compile Include="DTConnection.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>

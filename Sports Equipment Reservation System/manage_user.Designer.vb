@@ -22,6 +22,7 @@ Partial Class manage_user
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -62,6 +63,7 @@ Partial Class manage_user
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cbStatus = New System.Windows.Forms.ComboBox()
         Me.csPass = New System.Windows.Forms.CheckBox()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         CType(Me.DGV1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -517,6 +519,11 @@ Partial Class manage_user
         Me.csPass.Text = "Show/Hide Password"
         Me.csPass.UseVisualStyleBackColor = True
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
+        '
         'manage_user
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -568,4 +575,5 @@ Partial Class manage_user
     Friend WithEvents PASSWORD As DataGridViewTextBoxColumn
     Friend WithEvents GENDER As DataGridViewTextBoxColumn
     Friend WithEvents NO As DataGridViewTextBoxColumn
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
 End Class
