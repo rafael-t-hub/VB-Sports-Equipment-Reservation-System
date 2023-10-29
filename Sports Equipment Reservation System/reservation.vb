@@ -1,6 +1,5 @@
 ﻿Public Class reservation
 
-    Dim Table_Tennis_Table As New ListViewItem()
     Private Sub AddEquipmentItem()
         Dim Basketball_Ball As New ListViewItem()
         Dim Volleyball_Ball As New ListViewItem()
@@ -40,18 +39,5 @@
 #End Region
         AddEquipmentItem()
 
-    End Sub
-
-    Private Sub lvEquipments_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles lvEquipments.DrawItem
-        Dim item As ListViewItem = e.Item
-
-        If e.State = ListViewItemStates.Selected Or e.State = ListViewItemStates.Hot Then
-            e.Graphics.FillRectangle(Brushes.White, e.Bounds) ' Change the background color to white
-            e.Graphics.DrawString(item.Text, lvEquipments.Font, Brushes.Black, e.Bounds) ' Change the text color to black
-        Else
-            e.DrawBackground()
-        End If
-
-        e.DrawText()
     End Sub
 End Class
