@@ -1,5 +1,4 @@
-﻿Imports System.Data.SqlClient
-Imports System.Text.RegularExpressions
+﻿Imports System.Text.RegularExpressions
 Imports MySql.Data.MySqlClient
 
 Public Class manage_user

@@ -1,4 +1,10 @@
-﻿Public Class reservation
+﻿Imports MySql.Data.MySqlClient
+Imports System.Text.RegularExpressions
+
+
+Public Class reservation
+
+
 
     Private Sub AddEquipmentItem()
         Dim Basketball_Ball As New ListViewItem()
